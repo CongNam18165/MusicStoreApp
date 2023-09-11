@@ -1,0 +1,16 @@
+<!-- <button (click)="console()">click me</button> -->
+
+<div class="container">
+    <div *ngFor=" let data of datas">
+        <div class="box-audio">
+            <div class="box-artist">
+                <img src={{data.album.images[2].url}} alt="" />
+                <div class="box-info">
+                    <p>{{data.name}}</p>
+                    <p>Ngày phát hành: {{data.album.release_date}}</p>
+                </div>
+            </div>
+            <audio class="ok" controls src={{data.preview_url}}></audio>
+        </div>
+    </div>
+</div>

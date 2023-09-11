@@ -1,0 +1,24 @@
+<div class="big-container">
+    <div class="container1">
+        <input 
+        (keydown.enter)="search2()"
+        (keydown)="search()" 
+        [(ngModel)]="inputValue"  
+        #textInput placeholder="nhap ten ca si" />
+        <button (click)="search2()"> <i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div class="container2">
+        <div class="box-artist">
+            <div class="artist" *ngFor=" let data of datas"
+            [routerLink]="[{outlets: {outlet1: [data.id]}}]"
+            >
+                <img [src]="data.images[2]?.url ?data.images[2]?.url : 'https://images.careerbuilder.vn/content/news/20161008/12342292_902073183175146_4845081041018880267_n_1475863222.jpg' "
+                    alt="anh minh hoa">
+                <p class="name-artist">{{data.name}}</p>
+                <p>{{data.type}} - {{data.genres[0]||'không có dữ liệu'}}</p>
+                <p>Follower: <span>{{data.followers.total}}</span></p>
+            </div>
+        </div>
+    </div>
+    <router-outlet name="outlet1"></router-outlet>
+</div>
