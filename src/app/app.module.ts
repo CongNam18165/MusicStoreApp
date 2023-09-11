@@ -7,6 +7,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AccessService } from './access.service';
 import { AccessInterceptor } from './access.interceptor';
 import { DataTracksService } from './data-tracks.service';
+import { ToastrService } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
