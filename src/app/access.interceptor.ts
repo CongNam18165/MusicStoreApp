@@ -16,6 +16,7 @@ export class AccessInterceptor implements HttpInterceptor {
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler): Observable<HttpEvent<any>> {
+    //Nếu trong localStorage có key là accessToken thì mới dùng hàm setHeaders để thêm access-token và có kiểu là Barer vào Headers 
     if (localStorage.getItem('accessToken') !== null) {
       const token = localStorage.getItem('accessToken')
       const tokenType = localStorage.getItem('tokenType')
@@ -29,6 +30,5 @@ export class AccessInterceptor implements HttpInterceptor {
     else {
       return next.handle(request);
     }
-    // return next.handle(request);
   }
 }

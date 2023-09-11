@@ -12,6 +12,8 @@ export class TrackDetailComponent implements OnInit {
   constructor(private http: HttpClient, private route: ActivatedRoute, private dataTracks: DataTracksService, private router: Router) { }
   id: string = ''
   datas: any 
+  // Khởi tạo giá trị ban đầu theo dõi sự kiện trên đối tượng router của Angular. Bên trong if kiểm tra sự kiện định tuyến route
+  // đã hoàn tất và tiếp tục gọi đến đối tượng route,phương thức paramMap để lấy giá trị từ url
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -20,7 +22,6 @@ export class TrackDetailComponent implements OnInit {
         })
         this.http.get(`https://api.spotify.com/v1/artists/${this.id}/top-tracks`, { params: { market: 'VN' } })
           .subscribe((res: any) => this.datas = res.tracks)
-        console.log(this.datas[1])
       }
     })
   }
